@@ -8,4 +8,4 @@
 script_dir="$(cd "$(dirname "$0")" && pwd)"
 source "${script_dir}/config.sh"
 
-"${script_dir}/changed.sh" "$watch_path" "${script_dir}/${sync_code_script}"
+"${script_dir}/changed.sh" "$watch_path" "${script_dir}/sync_codes.sh"
