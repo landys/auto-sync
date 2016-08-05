@@ -6,6 +6,10 @@ script_dir="$(cd "$(dirname "$0")" && pwd)"
 source "${script_dir}/config.sh"
 
 mod_file="$1"
+if [ ! -f "$mod_file" ]; then
+    return 0
+fi
+
 dest_file=${mod_file/"$watch_path"/"$dest_path"}
 
 ext="${mod_file##*.}"
@@ -17,6 +21,7 @@ ele_in() {
 }
 
 if (ele_in "$ext" "${filter_exts[@]}") && [ -f "$mod_file" ]; then
-    echo cp -f "$mod_file" "$dest_file"
+    mkdir -p "$(dirname "$dest_file")"
+    cp -f "$mod_file" "$dest_file"
 fi
 
